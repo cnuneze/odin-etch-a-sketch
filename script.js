@@ -11,6 +11,23 @@ function init()
         
         container.appendChild(item);
     }
+
+    applyHoverEffect();
+}
+
+function applyHoverTrailEffect() {
+    const grid = document.querySelectorAll('.grid-item');
+    grid.forEach(item => {
+        item.addEventListener('mouseenter', (event) => {
+            const element = event.target;
+            element.style['background-color'] = 'blue';
+        })
+
+        item.addEventListener('mouseleave', (event) => {
+            const element = event.target;
+            element.style['background-color'] = '#fff';
+        })
+    });
 }
 
 init();
