@@ -12,7 +12,7 @@ function init()
         container.appendChild(item);
     }
 
-    applyHoverEffect();
+    applyHoverTrailEffect();
 }
 
 function applyHoverTrailEffect() {

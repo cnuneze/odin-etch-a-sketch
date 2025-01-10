@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0px;
+}
+
 #container {
     width: 1200px;
     margin: 0 auto;
@@ -13,4 +17,17 @@
     border: 1px solid red;
     width: 75px;
     height: 75px;
+}
+
+.header {
+    height: 100px;
+    display: flex;
+    background-color: aquamarine;
+    justify-content: end;
+    align-items: center;
+}
+
+#btn_gridSize {
+    margin-right: 60px;
+    height: 40px;
 }
