@@ -61,7 +61,12 @@ function startEvents()
 
     gridSizeButton.addEventListener('click', (event) =>
     {
-        let newGridSize = prompt('Ingrese tamaño del grid:', 16);
+        let newGridSize = Number.parseInt(prompt('Ingrese tamaño del grid:', 16));
+
+        if (!isValidSize(newGridSize)) {
+            console.error('Invalid gridSize value.')
+            return 0;
+        }
 
         console.log(newGridSize);
         
@@ -70,6 +75,16 @@ function startEvents()
             drawGrid(newGridSize, true);
         }
     });
+}
+
+function isValidSize(size)
+{
+    if (Number.isNaN(size)) {
+        return false;
+    }
+
+    const maxGridSize = 100;
+    return size <= maxGridSize;
 }
 
 start();
