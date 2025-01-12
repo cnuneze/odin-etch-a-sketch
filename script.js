@@ -1,3 +1,6 @@
+let brightnessIncrease = true;
+let brightnessLevel = 9;
+
 function start()
 {
     let gridInitialSize = 16;
@@ -11,13 +14,16 @@ function applyHoverTrailEffect()
     grid.forEach(item => {
         item.addEventListener('mouseenter', (event) => {
             let randomColor = getRandomColor();
+            let brightness = getBrightness();
             const element = event.target;
             element.style['background-color'] = randomColor;
+            element.style['filter'] = `brightness(${brightness})`;            
         })
 
         item.addEventListener('mouseleave', (event) => {
             const element = event.target;
             element.style['background-color'] = '#fff';
+            element.style['filter'] = `brightness(1)`;
         })
     });
 }
@@ -98,6 +104,21 @@ function getRandomColor()
     let blue = randomRgbValue();
 
     return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function getBrightness()
+{
+    if ((brightnessLevel > 9) || (brightnessLevel < 1)) {
+        brightnessIncrease = !brightnessIncrease;
+    }
+    
+    let increase = () => brightnessLevel + 1;
+    let decrease = () => brightnessLevel - 1;
+
+    brightnessLevel = brightnessIncrease ? increase() : decrease();
+
+
+    return brightnessLevel / 10;
 }
 
 start();
