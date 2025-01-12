@@ -10,8 +10,9 @@ function applyHoverTrailEffect()
     const grid = document.querySelectorAll('.grid-item');
     grid.forEach(item => {
         item.addEventListener('mouseenter', (event) => {
+            let randomColor = getRandomColor();
             const element = event.target;
-            element.style['background-color'] = 'blue';
+            element.style['background-color'] = randomColor;
         })
 
         item.addEventListener('mouseleave', (event) => {
@@ -85,6 +86,18 @@ function isValidSize(size)
 
     const maxGridSize = 100;
     return size <= maxGridSize;
+}
+
+function getRandomColor()
+{
+    const maxRgbValue = 256;
+    randomRgbValue = () => Math.floor(Math.random() * maxRgbValue);
+    
+    let red = randomRgbValue();
+    let green = randomRgbValue();
+    let blue = randomRgbValue();
+
+    return `rgb(${red}, ${green}, ${blue})`;
 }
 
 start();
